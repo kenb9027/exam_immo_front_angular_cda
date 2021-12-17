@@ -4,12 +4,13 @@ import { RouterModule  } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 
-
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule} from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
@@ -18,6 +19,15 @@ import { MatIconModule } from '@angular/material/icon';
 import { HeaderComponent } from './parts/header/header.component';
 import { PropertyCardComponent } from './parts/property-card/property-card.component';
 import { PropertyListComponent } from './parts/property-list/property-list.component';
+import { DetailComponent } from './detail/detail.component';
+import { AddPropertyComponent } from './add-property/add-property.component';
+import { LoginComponent } from './login/login.component';
+import { JwtInterceptor } from './_helpers/jwt.interceptor';
+import { AddAgentComponent } from './add-agent/add-agent.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatSelectModule } from '@angular/material/select';
+import {MatTableModule} from '@angular/material/table';
+import {MatRadioModule} from '@angular/material/radio';
 
 
 
@@ -27,7 +37,11 @@ import { PropertyListComponent } from './parts/property-list/property-list.compo
     HomeComponent,
     HeaderComponent,
     PropertyCardComponent,
-    PropertyListComponent
+    PropertyListComponent,
+    DetailComponent,
+    AddPropertyComponent,
+    LoginComponent,
+    AddAgentComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +54,15 @@ import { PropertyListComponent } from './parts/property-list/property-list.compo
     MatMenuModule,
     MatToolbarModule,
     MatIconModule,
-    MatCardModule
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatCheckboxModule,
+    MatSelectModule,
+    MatRadioModule,
+    MatTableModule
+    
+    
 
   ],
   exports: [
@@ -48,9 +70,17 @@ import { PropertyListComponent } from './parts/property-list/property-list.compo
     MatMenuModule,
     MatToolbarModule,
     MatIconModule,
-    MatCardModule
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatCheckboxModule,
+    MatSelectModule,
+    MatRadioModule,
+    MatTableModule
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi:true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,3 +1,16 @@
-<mat-toolbar>
-  <span>Immo.fr</span>
+<mat-toolbar >
+  <a [routerLink]="['/']" >
+    <mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon>
+  </a>
+  <a [routerLink]="['/add-property']" >
+    <mat-icon aria-hidden="false" aria-label="Example home icon">queue</mat-icon>
+  </a>
+  <a [routerLink]="['/login']" >
+    <mat-icon aria-hidden="false" aria-label="Example home icon">face</mat-icon>
+  </a>
+  <a [routerLink]="['/add-agent']" >
+    <mat-icon aria-hidden="false" aria-label="Example home icon">person_add</mat-icon>
+  </a>
+
+
 </mat-toolbar>

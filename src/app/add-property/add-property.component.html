@@ -1,0 +1,53 @@
+<h3>Ajouter une annonce :</h3>
+
+<form [formGroup]="propertyForm" (ngSubmit)="submit()">
+  <mat-form-field>
+    <mat-label>Titre de l'annonce</mat-label>
+    <input matInput formControlName="title" id="title" type="text" required />
+    <mat-error>Required</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Prix</mat-label>
+    <input matInput formControlName="price" id="price" type="text" required />
+    <mat-error>Required</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Secteur</mat-label>
+    <input matInput formControlName="sector" id="sector" type="text" required />
+    <mat-error>Required</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Nombre de pièces</mat-label>
+    <input matInput formControlName="rooms" id="rooms" type="number" required />
+    <mat-error>Required</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Description</mat-label>
+    <input matInput formControlName="description" id="description" type="text" required />
+    <mat-error>Required</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>URL de la photo</mat-label>
+    <input matInput formControlName="picture" id="picture" type="text"/>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Agent (id)</mat-label>
+    <input matInput formControlName="AgentId" id="AgentId" type="number" required />
+    <mat-error>Required</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Type (id)</mat-label>
+    <input matInput formControlName="TypeId" id="TypeId" type="number" required />
+    <mat-error>Required</mat-error>
+  </mat-form-field>
+
+  <button type="submit" [disabled]="!propertyForm.valid">Soumettre l'annonce</button>
+
+</form>

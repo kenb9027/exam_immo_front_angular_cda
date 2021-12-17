@@ -1,7 +1,13 @@
 <mat-card>
+
+<a [routerLink]="['/detail', property?.id]" >
+
   <mat-card-title>
     {{ property?.title }}
   </mat-card-title>
+
+</a>
+  
   <mat-card-subtitle>
     Type: {{ property?.Type.name}}
   </mat-card-subtitle>
@@ -12,6 +18,8 @@
 
 
   <mat-card-content>
+      Description: 
+      <br>
       {{ property?.description}}
   </mat-card-content>
 
