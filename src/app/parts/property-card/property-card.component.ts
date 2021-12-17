@@ -10,6 +10,7 @@ import { Property } from 'src/app/shared/models/property';
 export class PropertyCardComponent implements OnInit {
 
   @Input() property: any;
+  @Input() tags: any; 
 
   
   constructor() { }

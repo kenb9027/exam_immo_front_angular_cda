@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Tag } from '../shared/models/tag';
 import { PropertyService } from '../shared/services/property.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class DetailComponent implements OnInit {
   property: any = {};
   tagPropIds: Array<Object> = [];
   tagIds: Array<string> = [];
-  tagNames: any = [];
+  tags: any = [];
 
   constructor(
     private propertyService: PropertyService,
@@ -27,37 +28,50 @@ export class DetailComponent implements OnInit {
     this.getProperty(this.id);
   }
 
+
   getProperty(id: string) {
     this.propertyService
       .getProperty(id)
       .then((property) => {
         // console.log(property.data);
         this.property = property.data;
-        this.propertyService
-          //get tags
-          .getPropertyTags(id)
-          .then((tags) => {
-            // console.log(tags);
-            this.tagPropIds = tags;
-            this.tagPropIds.forEach(element => {
-              for (const [key, value] of Object.entries(element)) {
-                // console.log(`${key}: ${value}`);
-                if (key === 'TagId') {
-                  this.tagIds.push(value);
-                }
-              }
+        this.getPropertyTags(id);
+      })
+      .catch((err) => console.log(err));
+  }
 
-            });
-            console.log(this.tagIds);
-            this.tagIds.forEach(elem => {
-              
+  getPropertyTags(id: string) {
+    this.propertyService
+      .getPropertyTags(id)
+      .then((tags) => {
+        // console.log(tags);
+        this.tagPropIds = tags;
+        this.tagPropIds.forEach((element) => {
+          for (const [key, value] of Object.entries(element)) {
+            // console.log(`${key}: ${value}`);
+            if (key === 'TagId') {
+              this.tagIds.push(value);
+            }
+          }
+        });
+        // console.log(this.tagIds);
 
-            });
-            console.log(this.tagNames);
+        this.tagIds.forEach((id) => {
+          this.propertyService.getTag(id).then((tag) => {
+            // console.log(tag.data.name);
+            this.tags.push(tag.data.name);
+            console.log(this.tags);
+            this.property.tags = this.tags;
+          });
+          
+        });
 
-          })
-          .catch((err) => console.log(err));
+
       })
       .catch((err) => console.log(err));
   }
 }
+
+/**
+ * 
+ */

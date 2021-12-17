@@ -70,15 +70,15 @@ export class PropertyService {
 
 
   /**
-   * Get tags names
+   * Get tag
    */
-  getTagName(id: string): Promise<any> {
+  getTag(id: string): Promise<any> {
     return new Promise((resolve, reject) => {
       this.http.get(`http://localhost:3000/tags/${id}`)
       .subscribe({
         next: (tags) => resolve(tags),
         error: () => reject,
-        complete: () => console.log('tag Names list DONE!')
+        complete: () => console.log('tags list DONE!')
     })
     })
   }

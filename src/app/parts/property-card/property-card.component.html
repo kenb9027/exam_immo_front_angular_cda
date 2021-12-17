@@ -1,33 +1,32 @@
 <mat-card>
+  <a [routerLink]="['/detail', property?.id]">
+    <mat-card-title>
+      {{ property?.title }}
+    </mat-card-title>
+  </a>
 
-<a [routerLink]="['/detail', property?.id]" >
-
-  <mat-card-title>
-    {{ property?.title }}
-  </mat-card-title>
-
-</a>
-  
-  <mat-card-subtitle>
-    Type: {{ property?.Type.name}}
-  </mat-card-subtitle>
+  <mat-card-subtitle> Type: {{ property?.Type.name }} </mat-card-subtitle>
 
   <mat-card-subtitle> {{ property?.price }} € </mat-card-subtitle>
 
   <mat-card-subtitle> Secteur: {{ property?.sector }} </mat-card-subtitle>
 
-
   <mat-card-content>
-      Description: 
-      <br>
-      {{ property?.description}}
+    Description:
+    <br />
+    {{ property?.description }}
   </mat-card-content>
+
+  <div *ngIf="tags">
+    <h5>#Tags</h5>
+    <ul>
+      <div *ngFor="let tag of tags">
+        <li>{{ tag }}</li>
+      </div>
+    </ul>
+  </div>
 
   <mat-card-actions></mat-card-actions>
 
-
-  <mat-card-footer>
-    Agent :{{ property?.Agent.name}}
-
-  </mat-card-footer>
+  <mat-card-footer> Agent :{{ property?.Agent.name }} </mat-card-footer>
 </mat-card>
