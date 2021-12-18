@@ -1,17 +1,23 @@
 <h3>Identifiez vous</h3>
-<form [formGroup]="loginForm" (ngSubmit)='submit()'>
-    <mat-form-field>
-        <mat-label>Email</mat-label>
-        <input matInput formControlName="email" id="email" type="text" required />
-        <mat-error>Required</mat-error>
-      </mat-form-field>
-
-      <mat-form-field>
-        <mat-label>Mot de passe</mat-label>
-        <input matInput formControlName="password" id="password" type="password" required />
-        <mat-error>Required</mat-error>
-      </mat-form-field>
+<form [formGroup]="loginForm" (ngSubmit)="submit()">
+  <mat-form-field>
+    <mat-label>Email</mat-label>
+    <input matInput formControlName="email" id="email" type="text" required />
+    <mat-error>Required</mat-error>
+  </mat-form-field>
+  <br />
+  <br />
+  <mat-form-field>
+    <mat-label>Mot de passe</mat-label>
+    <input
+      matInput
+      formControlName="password"
+      id="password"
+      type="password"
+      required
+    />
+    <mat-error>Required</mat-error>
+  </mat-form-field>
 
   <button type="submit" [disabled]="!loginForm.valid">Se Connecter</button>
-
 </form>

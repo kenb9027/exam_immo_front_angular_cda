@@ -6,24 +6,28 @@
     <input matInput formControlName="title" id="title" type="text" required />
     <mat-error>Required</mat-error>
   </mat-form-field>
+  <br />
 
   <mat-form-field>
     <mat-label>Prix</mat-label>
     <input matInput formControlName="price" id="price" type="text" required />
     <mat-error>Required</mat-error>
   </mat-form-field>
+  <br />
 
   <mat-form-field>
     <mat-label>Secteur</mat-label>
     <input matInput formControlName="sector" id="sector" type="text" required />
     <mat-error>Required</mat-error>
   </mat-form-field>
+  <br />
 
   <mat-form-field>
     <mat-label>Nombre de pièces</mat-label>
     <input matInput formControlName="rooms" id="rooms" type="number" required />
     <mat-error>Required</mat-error>
   </mat-form-field>
+  <br />
 
   <mat-form-field>
     <mat-label>Description</mat-label>
@@ -36,33 +40,32 @@
     />
     <mat-error>Required</mat-error>
   </mat-form-field>
+  <br />
 
   <mat-form-field>
     <mat-label>URL de la photo</mat-label>
     <input matInput formControlName="picture" id="picture" type="text" />
   </mat-form-field>
+  <br />
 
-  <!-- <mat-form-field>
-    <mat-label>Agent (id)</mat-label>
-    <input
-      matInput
-      formControlName="AgentId"
-      id="AgentId"
-      type="number"
-      required
-    />
-    <mat-error>Required</mat-error>
-  </mat-form-field> -->
+  <mat-label>Tags : </mat-label>
+  <ng-container *ngFor="let tag of allTags">
+    <mat-checkbox value="{{ tag?.id }}">
+      {{ tag?.name }}
+    </mat-checkbox>
+  </ng-container>
 
+  <br />
   <mat-form-field appearance="fill">
     <mat-select formControlName="AgentId" id="AgentId" required>
       <div *ngFor="let agent of agents">
-        <mat-option value="{{ agent?.id}}">{{ agent?.name}}</mat-option>
+        <mat-option value="{{ agent?.id }}">{{ agent?.name }}</mat-option>
       </div>
     </mat-select>
     <mat-label>Agent</mat-label>
   </mat-form-field>
 
+  <br />
   <mat-form-field appearance="fill">
     <mat-select formControlName="TypeId" id="TypeId" required>
       <mat-option value="1">Appartement</mat-option>
@@ -71,7 +74,8 @@
     </mat-select>
     <mat-label>Type</mat-label>
   </mat-form-field>
-
+  
+  <br />
   <button type="submit" [disabled]="!propertyForm.valid">
     Soumettre l'annonce
   </button>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Tag } from '../shared/models/tag';
 import { PropertyService } from '../shared/services/property.service';
+import { TagService } from '../shared/services/tag.service';
 
 @Component({
   selector: 'app-detail',
@@ -21,6 +22,7 @@ export class DetailComponent implements OnInit {
 
   constructor(
     private propertyService: PropertyService,
+    private tagService: TagService,
     private route: ActivatedRoute
   ) {
     this.route.params.subscribe((params) => {
@@ -62,7 +64,7 @@ export class DetailComponent implements OnInit {
         // console.log(this.tagIds);
 
         this.tagIds.forEach((id) => {
-          this.propertyService.getTag(id).then((tag) => {
+          this.tagService.getTag(id).then((tag) => {
             // console.log(tag.data.name);
             this.tags.push(tag.data.name);
             // console.log(this.tags);

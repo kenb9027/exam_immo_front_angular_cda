@@ -13,8 +13,11 @@ export class AgentService {
     return new Promise((resolve, reject) => {
       this.http.post('http://localhost:3000/agents/login', data)
       .subscribe( {
-        next: (token:any) => {
+        next: (token: any) => {
+          console.log(token);
           localStorage.setItem('auth',token.token)
+          localStorage.setItem('name',token.name)
+          localStorage.setItem('email',token.email)
           resolve(token) 
         },
         error: () => reject, 

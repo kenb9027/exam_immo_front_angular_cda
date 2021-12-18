@@ -1,16 +1,32 @@
-<mat-toolbar >
-  <a [routerLink]="['/']" >
-    <mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon>
-  </a>
-  <a [routerLink]="['/add-property']" >
-    <mat-icon aria-hidden="false" aria-label="Example home icon">queue</mat-icon>
-  </a>
-  <a [routerLink]="['/login']" >
-    <mat-icon aria-hidden="false" aria-label="Example home icon">face</mat-icon>
-  </a>
-  <a [routerLink]="['/add-agent']" >
-    <mat-icon aria-hidden="false" aria-label="Example home icon">person_add</mat-icon>
-  </a>
+<mat-toolbar>
+  <div>
+    <a [routerLink]="['/']">
+      <mat-icon aria-hidden="false" aria-label="Example home icon"
+        >home</mat-icon
+      >
+      <span>Home</span>
+    </a>
+    <a [routerLink]="['/add-property']">
+      <mat-icon aria-hidden="false" aria-label="Example home icon"
+        >queue</mat-icon
+      >
+      <span>Ajouter une annonce</span>
+    </a>
+    <a [routerLink]="['/login']">
+      <mat-icon aria-hidden="false" aria-label="Example home icon"
+        >face</mat-icon
+      >
+      <span>Login</span>
+    </a>
+    <a [routerLink]="['/add-agent']">
+      <mat-icon aria-hidden="false" aria-label="Example home icon"
+        >person_add</mat-icon
+      >
+      <span>Ajouter un agent</span>
+    </a>
+  </div>
 
-
+  <div *ngIf="username">
+    <h5>Bonjour {{ username }}</h5>
+  </div>
 </mat-toolbar>

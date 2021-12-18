@@ -44,6 +44,7 @@ export class PropertyService {
    * Add a property
    */
   postProperty(data: Object): Promise<any> {
+    console.log(data);
     return new Promise((resolve, reject) => {
       this.http.post(`http://localhost:3000/properties/add`, data)
         .subscribe({
@@ -69,19 +70,7 @@ export class PropertyService {
   }
 
 
-  /**
-   * Get tag
-   */
-  getTag(id: string): Promise<any> {
-    return new Promise((resolve, reject) => {
-      this.http.get(`http://localhost:3000/tags/${id}`)
-      .subscribe({
-        next: (tags) => resolve(tags),
-        error: () => reject,
-        complete: () => console.log('tags list DONE!')
-    })
-    })
-  }
+
   /**
    * Get property avantages
    */

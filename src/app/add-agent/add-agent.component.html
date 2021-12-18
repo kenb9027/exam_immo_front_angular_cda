@@ -5,18 +5,18 @@
     <input matInput formControlName="name" id="name" type="text" required />
     <mat-error>Required</mat-error>
   </mat-form-field>
-
+  <br />
   <mat-form-field>
     <mat-label>Age</mat-label>
     <input matInput formControlName="age" id="age" type="number" />
   </mat-form-field>
-
+  <br />
   <mat-form-field>
     <mat-label>Email</mat-label>
     <input matInput formControlName="email" id="email" type="string" required />
     <mat-error>Required</mat-error>
   </mat-form-field>
-
+  <br />
   <mat-form-field>
     <mat-label>Mot de passe</mat-label>
     <input
@@ -28,12 +28,12 @@
     />
     <mat-error>Required</mat-error>
   </mat-form-field>
-
+  <br />
   <mat-form-field>
     <mat-label>Téléphone</mat-label>
     <input matInput formControlName="tel" id="tel" type="string" />
   </mat-form-field>
-
+  <br />
   <mat-form-field appearance="fill">
     <mat-select required>
       <mat-option value="true">Oui</mat-option>
@@ -41,6 +41,6 @@
     </mat-select>
     <mat-label>Administrateur ?</mat-label>
   </mat-form-field>
-
+  <br />
   <button type="submit" [disabled]="!agentForm.valid">Ajouter l'agent</button>
 </form>
