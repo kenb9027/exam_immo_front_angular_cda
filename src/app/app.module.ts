@@ -41,7 +41,7 @@ import {MatRadioModule} from '@angular/material/radio';
     DetailComponent,
     AddPropertyComponent,
     LoginComponent,
-    AddAgentComponent
+    AddAgentComponent,
   ],
   imports: [
     BrowserModule,

@@ -82,4 +82,32 @@ export class PropertyService {
     })
     })
   }
+  /**
+   * Get property avantages
+   */
+  getPropertyAvantages(id: string): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.http.get(`http://localhost:3000/avantageproperty/property/${id}`)
+      .subscribe({
+        next: (avantages) => resolve(avantages),
+        error: () => reject,
+        complete: () => console.log('avantages list DONE!')
+    })
+    })
+  }
+
+  /**
+   * Get avantage
+   */
+     getAvantage(id: string): Promise<any> {
+      return new Promise((resolve, reject) => {
+        this.http.get(`http://localhost:3000/avantages/${id}`)
+        .subscribe({
+          next: (avantages) => resolve(avantages),
+          error: () => reject,
+          complete: () => console.log('avantages list DONE!')
+      })
+      })
+    }
+
 }

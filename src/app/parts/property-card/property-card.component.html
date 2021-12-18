@@ -26,6 +26,15 @@
     </ul>
   </div>
 
+  <div *ngIf="avantages">
+    <h5>Avantages</h5>
+    <ul>
+      <div *ngFor="let avantage of avantages">
+        <li>{{ avantage }}</li>
+      </div>
+    </ul>
+  </div>
+
   <mat-card-actions></mat-card-actions>
 
   <mat-card-footer> Agent :{{ property?.Agent.name }} </mat-card-footer>

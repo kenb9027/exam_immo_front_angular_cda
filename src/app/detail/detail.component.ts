@@ -14,6 +14,10 @@ export class DetailComponent implements OnInit {
   tagPropIds: Array<Object> = [];
   tagIds: Array<string> = [];
   tags: any = [];
+  avantagePropIds: Array<Object> = [];
+  avantageIds: Array<string> = [];
+  avantages: any = [];
+  
 
   constructor(
     private propertyService: PropertyService,
@@ -36,6 +40,7 @@ export class DetailComponent implements OnInit {
         // console.log(property.data);
         this.property = property.data;
         this.getPropertyTags(id);
+        this.getPropertyAvantages(id);
       })
       .catch((err) => console.log(err));
   }
@@ -60,8 +65,40 @@ export class DetailComponent implements OnInit {
           this.propertyService.getTag(id).then((tag) => {
             // console.log(tag.data.name);
             this.tags.push(tag.data.name);
-            console.log(this.tags);
+            // console.log(this.tags);
             this.property.tags = this.tags;
+          });
+          
+        });
+
+
+      })
+      .catch((err) => console.log(err));
+  }
+
+
+  getPropertyAvantages(id: string) {
+    this.propertyService
+      .getPropertyAvantages(id)
+      .then((avantages) => {
+        // console.log(avantages);
+        this.avantagePropIds = avantages;
+        this.avantagePropIds.forEach((element) => {
+          for (const [key, value] of Object.entries(element)) {
+            // console.log(`${key}: ${value}`);
+            if (key === 'AvantageId') {
+              this.avantageIds.push(value);
+            }
+          }
+        });
+        // console.log(this.avantageIds);
+
+        this.avantageIds.forEach((id) => {
+          this.propertyService.getAvantage(id).then((avantage) => {
+            // console.log(avantage.data.name);
+            this.avantages.push(avantage.data.name);
+            // console.log(this.avantages);
+            this.property.avantages = this.avantages;
           });
           
         });

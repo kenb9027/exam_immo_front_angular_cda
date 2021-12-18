@@ -11,6 +11,7 @@ export class PropertyCardComponent implements OnInit {
 
   @Input() property: any;
   @Input() tags: any; 
+  @Input() avantages: any; 
 
   
   constructor() { }

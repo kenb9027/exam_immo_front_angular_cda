@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Agent } from '../shared/models/agent';
+import { AgentService } from '../shared/services/agent.service';
 import { PropertyService } from '../shared/services/property.service';
 
 @Component({
@@ -20,18 +22,22 @@ export class AddPropertyComponent implements OnInit {
     AgentId:[1, Validators.required],
     TypeId:[1, Validators.required],
   })
-  
+
+  agents: Array<Agent> = [];
   
   
   constructor(
     private fb: FormBuilder,
     private propertyService: PropertyService,
+    private agentService: AgentService,
     private router: Router
   ) {}
 
 
 
-  ngOnInit(): void { }
+  ngOnInit(): void { 
+    this.getAgents();
+  }
   
 
 
@@ -43,4 +49,18 @@ export class AddPropertyComponent implements OnInit {
       })
       .catch((err) => console.log(err));
   }
+
+
+  getAgents() {
+    this.agentService
+      .getAll()
+      .then((agents) => {
+        console.log(agents);
+        this.agents = agents;
+      })
+      .catch((err) => console.log(err));
+
+}
+
+
 }

@@ -27,27 +27,52 @@
 
   <mat-form-field>
     <mat-label>Description</mat-label>
-    <input matInput formControlName="description" id="description" type="text" required />
+    <input
+      matInput
+      formControlName="description"
+      id="description"
+      type="text"
+      required
+    />
     <mat-error>Required</mat-error>
   </mat-form-field>
 
   <mat-form-field>
     <mat-label>URL de la photo</mat-label>
-    <input matInput formControlName="picture" id="picture" type="text"/>
+    <input matInput formControlName="picture" id="picture" type="text" />
   </mat-form-field>
 
-  <mat-form-field>
+  <!-- <mat-form-field>
     <mat-label>Agent (id)</mat-label>
-    <input matInput formControlName="AgentId" id="AgentId" type="number" required />
+    <input
+      matInput
+      formControlName="AgentId"
+      id="AgentId"
+      type="number"
+      required
+    />
     <mat-error>Required</mat-error>
+  </mat-form-field> -->
+
+  <mat-form-field appearance="fill">
+    <mat-select formControlName="AgentId" id="AgentId" required>
+      <div *ngFor="let agent of agents">
+        <mat-option value="{{ agent?.id}}">{{ agent?.name}}</mat-option>
+      </div>
+    </mat-select>
+    <mat-label>Agent</mat-label>
   </mat-form-field>
 
-  <mat-form-field>
-    <mat-label>Type (id)</mat-label>
-    <input matInput formControlName="TypeId" id="TypeId" type="number" required />
-    <mat-error>Required</mat-error>
+  <mat-form-field appearance="fill">
+    <mat-select formControlName="TypeId" id="TypeId" required>
+      <mat-option value="1">Appartement</mat-option>
+      <mat-option value="2">Maison</mat-option>
+      <mat-option value="3">Bureau</mat-option>
+    </mat-select>
+    <mat-label>Type</mat-label>
   </mat-form-field>
 
-  <button type="submit" [disabled]="!propertyForm.valid">Soumettre l'annonce</button>
-
+  <button type="submit" [disabled]="!propertyForm.valid">
+    Soumettre l'annonce
+  </button>
 </form>
